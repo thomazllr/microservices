@@ -20,10 +20,11 @@ public class AccountService {
     public void save(Customer customer) {
         var account = Account.builder()
                 .customerId(customer.getCustomerId())
-                .accountNumber(1000000L + new Random().nextInt(9000000))
                 .accountType(AccountsConstants.SAVINGS)
                 .branchAddress(AccountsConstants.ADDRESS)
                 .build();
+
+        account.generateAccountNumber();
 
         repository.save(account);
 
