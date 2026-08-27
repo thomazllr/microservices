@@ -1,0 +1,10 @@
+build:
+  info: "2.0"
+accounts:
+  message: "Welcome to e-Bank accounts related QA APIs"
+  contactDetails:
+    name: "Smitha Ray - QA Lead"
+    email: "smitha@ebank.com"
+  onCallSupport:
+    - +1 6202823112
+    - +1 3052042371

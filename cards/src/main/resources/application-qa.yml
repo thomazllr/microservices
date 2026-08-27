@@ -1,0 +1,11 @@
+build:
+  info: "2.0"
+accounts:
+  message: "Welcome to e-Bank cards related QA APIs"
+  contactDetails:
+    name: "Paulo César - QA Lead"
+    email: "pysllo@ebank.com"
+  onCallSupport:
+    - +55 64926194518
+    - +55 2774363571
+

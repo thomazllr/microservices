@@ -16,3 +16,16 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+  profiles:
+    active:
+      - "qa"
+build:
+  info: "3.0"
+accounts:
+  message: "Welcome to e-Bank accounts related local APIs"
+  contactDetails:
+    name: "John Doe - Developer"
+    email: "john@ebank.com"
+  onCallSupport:
+    - +1 5052909253
+    - +1 4724906961

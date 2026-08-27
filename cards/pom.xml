@@ -135,7 +135,7 @@
 				<version>3.5.2</version>
 				<configuration>
 					<to>
-						<image>thomazllr/${project.artifactId}:s4</image>
+						<image>thomazllr/${project.artifactId}:s6</image>
 					</to>
 				</configuration>
 			</plugin>

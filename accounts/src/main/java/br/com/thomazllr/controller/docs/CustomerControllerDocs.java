@@ -14,6 +14,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -137,4 +138,22 @@ public interface CustomerControllerDocs {
             )
             @Valid CustomerAccountUpdateRequest request
     );
+
+    @Operation(
+            summary = "Consulta a informação de build",
+            description = "Retorna a versão de build configurada para a aplicação."
+    )
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Informação de build retornada com sucesso",
+                    content = @Content(schema = @Schema(type = "string", example = "1.0"))
+            ),
+            @ApiResponse(
+                    responseCode = "500",
+                    description = "Erro interno do servidor",
+                    content = @Content(schema = @Schema(implementation = ErrorResponseDto.class))
+            )
+    })
+    ResponseEntity<String> getBuildInfo();
 }
