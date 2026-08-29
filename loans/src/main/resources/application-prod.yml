@@ -1,9 +1,0 @@
-build:
-  info: "1.0"
-accounts:
-  message: "Welcome to e-Bank loans related prod APIs"
-  contactDetails:
-    name: "Thomaz Zuckerberg - Product Owner"
-    email: "thomaz@ebank.com"
-  onCallSupport:
-    - +1 5056011988

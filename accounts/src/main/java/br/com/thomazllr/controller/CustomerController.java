@@ -9,6 +9,7 @@ import br.com.thomazllr.dto.response.ResponseDto;
 import br.com.thomazllr.service.CustomerService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -24,10 +25,11 @@ public class CustomerController implements CustomerControllerDocs {
 
     private final CustomerService customerService;
 
-    @Value("${build.info}")
+    @Value("${build.version}")
     private String buildVersion;
 
-    private final AccountsContactInfo contactInfo;
+    @Autowired
+    private AccountsContactInfo contactInfo;
 
     @Override
     @PostMapping

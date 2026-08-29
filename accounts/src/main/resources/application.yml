@@ -3,6 +3,8 @@ server:
 spring:
   application:
     name: accounts
+  profiles:
+    active: "prod"
   datasource:
     url: jdbc:h2:mem:testdb
     driver-class-name: org.h2.Driver
@@ -16,16 +18,10 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
-  profiles:
-    active:
-      - "qa"
-build:
-  info: "3.0"
-accounts:
-  message: "Welcome to e-Bank accounts related local APIs"
-  contactDetails:
-    name: "John Doe - Developer"
-    email: "john@ebank.com"
-  onCallSupport:
-    - +1 5052909253
-    - +1 4724906961
+  config:
+    import: "optional:configserver:http://localhost:8071/"
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

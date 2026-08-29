@@ -5,10 +5,13 @@ import br.com.thomazllr.controller.docs.LoanControllerDocs;
 import br.com.thomazllr.dto.request.LoanRequest;
 import br.com.thomazllr.dto.request.LoanUpdateRequest;
 import br.com.thomazllr.dto.response.LoanResponse;
+import br.com.thomazllr.dto.response.LoansContactInfo;
 import br.com.thomazllr.dto.response.ResponseDto;
 import br.com.thomazllr.service.LoanService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,6 +23,12 @@ import static org.springframework.http.HttpStatus.CREATED;
 public class LoanController implements LoanControllerDocs {
 
     private final LoanService loanService;
+
+    @Value("${build.version}")
+    private String buildVersion;
+
+    @Autowired
+    private LoansContactInfo contactInfo;
 
     @Override
     @PostMapping
@@ -47,5 +56,16 @@ public class LoanController implements LoanControllerDocs {
     public ResponseEntity<Void> update(@PathVariable Long id, @RequestBody @Valid LoanUpdateRequest request) {
         loanService.update(id, request);
         return ResponseEntity.noContent().build();
+    }
+
+
+    @GetMapping("/build-info")
+    public ResponseEntity<String> getBuildInfo() {
+        return ResponseEntity.ok(buildVersion);
+    }
+
+    @GetMapping("/contact-info")
+    public ResponseEntity<LoansContactInfo> getContactInfo() {
+        return ResponseEntity.ok(contactInfo);
     }
 }
