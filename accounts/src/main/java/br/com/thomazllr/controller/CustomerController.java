@@ -28,8 +28,7 @@ public class CustomerController implements CustomerControllerDocs {
     @Value("${build.version}")
     private String buildVersion;
 
-    @Autowired
-    private AccountsContactInfo contactInfo;
+    private final AccountsContactInfo contactInfo;
 
     @Override
     @PostMapping
