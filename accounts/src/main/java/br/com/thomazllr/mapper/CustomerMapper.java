@@ -4,8 +4,7 @@ import br.com.thomazllr.domain.Account;
 import br.com.thomazllr.domain.Customer;
 import br.com.thomazllr.dto.request.CustomerAccountUpdateRequest;
 import br.com.thomazllr.dto.request.CustomerRequest;
-import br.com.thomazllr.dto.response.AccountResponse;
-import br.com.thomazllr.dto.response.CustomerResponse;
+import br.com.thomazllr.dto.response.*;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -32,6 +31,23 @@ public class CustomerMapper {
                         .build())
                 .build();
     }
+
+    public CustomerDetailsResponse toResponse(Customer customer, Account account, LoanResponse loan, CardResponse card) {
+        return CustomerDetailsResponse.builder()
+                .id(customer.getCustomerId())
+                .name(customer.getName())
+                .email(customer.getEmail())
+                .mobileNumber(customer.getMobileNumber())
+                .account(AccountResponse.builder()
+                        .accountNumber(account.getAccountNumber())
+                        .accountType(account.getAccountType())
+                        .branchAddress(account.getBranchAddress())
+                        .build())
+                .loan(loan)
+                .card(card)
+                .build();
+    }
+
 
     public Customer toEntity(CustomerAccountUpdateRequest dto, long id) {
         return Customer.builder()

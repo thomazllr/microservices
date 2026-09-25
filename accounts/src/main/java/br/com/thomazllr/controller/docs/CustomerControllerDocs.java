@@ -2,6 +2,7 @@ package br.com.thomazllr.controller.docs;
 
 import br.com.thomazllr.dto.request.CustomerAccountUpdateRequest;
 import br.com.thomazllr.dto.request.CustomerRequest;
+import br.com.thomazllr.dto.response.CustomerDetailsResponse;
 import br.com.thomazllr.dto.response.CustomerResponse;
 import br.com.thomazllr.dto.response.ErrorResponseDto;
 import br.com.thomazllr.dto.response.ResponseDto;
@@ -82,6 +83,9 @@ public interface CustomerControllerDocs {
             )
             @RequestParam String mobileNumber
     );
+
+    @GetMapping("/detail")
+    ResponseEntity<CustomerDetailsResponse> getOneWithDetail(@RequestParam String mobileNumber);
 
     @Operation(
             summary = "Remove um cliente",

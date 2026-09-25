@@ -4,12 +4,12 @@ import br.com.thomazllr.controller.docs.CustomerControllerDocs;
 import br.com.thomazllr.dto.request.CustomerAccountUpdateRequest;
 import br.com.thomazllr.dto.request.CustomerRequest;
 import br.com.thomazllr.dto.response.AccountsContactInfo;
+import br.com.thomazllr.dto.response.CustomerDetailsResponse;
 import br.com.thomazllr.dto.response.CustomerResponse;
 import br.com.thomazllr.dto.response.ResponseDto;
 import br.com.thomazllr.service.CustomerService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -41,6 +41,12 @@ public class CustomerController implements CustomerControllerDocs {
     @GetMapping
     public ResponseEntity<CustomerResponse> getOne(@RequestParam String mobileNumber) {
         return ResponseEntity.ok(customerService.findOneByMobileNumber(mobileNumber));
+    }
+
+    @Override
+    @GetMapping("/detail")
+    public ResponseEntity<CustomerDetailsResponse> getOneWithDetail(@RequestParam String mobileNumber) {
+        return ResponseEntity.ok(customerService.findOneWithDetailByMobileNumber(mobileNumber));
     }
 
     @Override
